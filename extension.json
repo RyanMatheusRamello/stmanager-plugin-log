@@ -1,0 +1,10 @@
+{
+    "name": "Log Panel",
+    "short_description": "Adiciona suporte a log de todos os requests feitos ao paínel",
+    "long_description": "readme.md",
+    "main": "index.js",
+    "language": "javascript",
+    "permissions": [
+        "REQUEST", "FILE", "ADD_PAGE", "ADD_MENU_ITEM"
+    ]
+}
