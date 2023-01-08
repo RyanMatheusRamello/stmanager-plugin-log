@@ -6,7 +6,7 @@ if(!fs.existsSync("log")){
     fs.mkdirSync("log")   
 }
 
-if(!fs.existsSync("log/panel.log.json")){
+if(!fs.existsSync("log/panel.log")){
     fs.writeFileSync("log/panel.log", ""); 
 }
 
@@ -43,7 +43,7 @@ client.on("endRequest", function(requestInfo){
     }
 
     fs.appendFileSync(
-        "panel.log",
+        "log/panel.log",
         JSON.stringify({
             date: formatDate("[dd/mm/yyyy h:m:s]"),
             userAgent: request.userAgent,
@@ -62,7 +62,7 @@ client.on("endRequest", function(requestInfo){
 client.addMenuItem("Logs", "fa-solid fa-file-lines", "tolls", "SECURITY", "/admin/logs");
 
 async function readByLine(callback, maxLines, skipLines){
-    const readable = fs.createReadStream(pathToFile);
+    const readable = fs.createReadStream("log/panel.log");
     const reader = readline.createInterface({ input: readable });
     let linesNum = 0;
     let countLine = 0;
